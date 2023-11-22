@@ -117,3 +117,64 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Your Game</title>
+ <style>
+    .game {
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+      display: inline-block;
+    }
+    .game-container {
+      white-space: nowrap;
+    }
+ </style>
+</head>
+<body>
+
+ <div class="game-container">
+   <canvas id="gameCanvas1" class="game"></canvas>
+   <canvas id="gameCanvas2" class="game"></canvas>
+   <canvas id="gameCanvas3" class="game"></canvas>
+   <canvas id="gameCanvas4" class="game"></canvas>
+ </div>
+
+ <script>
+    // Your game's JavaScript code goes here
+
+    var canvas1 = document.getElementById('gameCanvas1');
+    var ctx1 = canvas1.getContext('2d');
+
+    var canvas2 = document.getElementById('gameCanvas2');
+    var ctx2 = canvas2.getContext('2d');
+
+    var canvas3 = document.getElementById('gameCanvas3');
+    var ctx3 = canvas3.getContext('2d');
+
+    var canvas4 = document.getElementById('gameCanvas4');
+    var ctx4 = canvas4.getContext('2d');
+
+    // Your game logic goes here
+
+    function update() {
+     // Update game state here
+    }
+
+    function draw() {
+     // Draw game elements here
+    }
+
+    function gameLoop() {
+     update();
+     draw();
+     requestAnimationFrame(gameLoop);
+    }
+
+    gameLoop();
+ </script>
+
+</body>
+</html>
