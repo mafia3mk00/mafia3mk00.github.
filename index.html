@@ -1,61 +1,53 @@
 <!DOCTYPE html>
-<html>
-<head>
- <title>Your Game</title>
- <style>
-    .game {
-      width: 200px;
-      height: 200px;
-      border: 1px solid black;
-      display: inline-block;
-    }
-    .game-container {
-      white-space: nowrap;
-    }
- </style>
-</head>
-<body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Games</title>
+        <style>
+            /* Optional: You can use CSS to style the game containers */
+            .game-container {
+                width: 100%;
+                height: 250px;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="game1" class="game-container"></div>
+        <div id="game2" class="game-container"></div>
+        <div id="game3" class="game-container"></div>
+        <div id="game4" class="game-container"></div>
 
- <div class="game-container">
-   <canvas id="gameCanvas1" class="game"></canvas>
-   <canvas id="gameCanvas2" class="game"></canvas>
-   <canvas id="gameCanvas3" class="game"></canvas>
-   <canvas id="gameCanvas4" class="game"></canvas>
- </div>
+        <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+        <script>
+            // Game 1
+            var game1 = new Phaser.Game(800, 600, Phaser.AUTO, 'game1');
+            game1.state.add('PlayGame', { preload: preload, create: create, update: update });
+            function preload() { /* Game 1 preload code */ }
+            function create() { /* Game 1 create code */ }
+            function update() { /* Game 1 update code */ }
 
- <script>
-    // Your game's JavaScript code goes here
+            // Game 2
+            var game2 = new Phaser.Game(800, 600, Phaser.AUTO, 'game2');
+            game2.state.add('PlayGame', { preload: preload, create: create, update: update });
+            function preload() { /* Game 2 preload code */ }
+            function create() { /* Game 2 create code */ }
+            function update() { /* Game 2 update code */ }
 
-    var canvas1 = document.getElementById('gameCanvas1');
-    var ctx1 = canvas1.getContext('2d');
+            // Game 3
+            var game3 = new Phaser.Game(800, 600, Phaser.AUTO, 'game3');
+            game3.state.add('PlayGame', { preload: preload, create: create, update: update });
+            function preload() { /* Game 3 preload code */ }
+            function create() { /* Game 3 create code */ }
+            function update() { /* Game 3 update code */ }
 
-    var canvas2 = document.getElementById('gameCanvas2');
-    var ctx2 = canvas2.getContext('2d');
-
-    var canvas3 = document.getElementById('gameCanvas3');
-    var ctx3 = canvas3.getContext('2d');
-
-    var canvas4 = document.getElementById('gameCanvas4');
-    var ctx4 = canvas4.getContext('2d');
-
-    // Your game logic goes here
-
-    function update() {
-     // Update game state here
-    }
-
-    function draw() {
-     // Draw game elements here
-    }
-
-    function gameLoop() {
-     update();
-     draw();
-     requestAnimationFrame(gameLoop);
-    }
-
-    gameLoop();
- </script>
-
-</body>
+            // Game 4
+            var game4 = new Phaser.Game(800, 600, Phaser.AUTO, 'game4');
+            game4.state.add('PlayGame', { preload: preload, create: create, update: update });
+            function preload() { /* Game 4 preload code */ }
+            function create() { /* Game 4 create code */ }
+            function update() { /* Game 4 update code */ }
+        </script>
+    </body>
 </html>
