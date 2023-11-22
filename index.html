@@ -1,32 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Games Website</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Welcome to My Games Website</h1>
-    </header>
-    <main>
-        <section class="game">
-            <h2>Game 1</h2>
-            <p>200 x 200</p>
-        </section>
-        <section class="game">
-            <h2>Game 2 Atalan</h2>
-            <p>200 x 200</p>
-        </section>
-        <section class="game">
-            <h2>Game 3</h2>
-            <p>200 x 200</p>
-        </section>
-        <section class="game">
-            <h2>Game 4</h2>
-            <p>200 x 200</p>
-        </section>
-    </main>
-</body>
-</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    padding: 2em;
+}
+
+.game {
+    border: 1px solid #ddd;
+    padding: 2em;
+    width: 200px;
+}
