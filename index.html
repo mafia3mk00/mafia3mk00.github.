@@ -1,53 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Games</title>
-        <style>
-            /* Optional: You can use CSS to style the game containers */
-            .game-container {
-                width: 100%;
-                height: 250px;
-                margin-bottom: 20px;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="game1" class="game-container"></div>
-        <div id="game2" class="game-container"></div>
-        <div id="game3" class="game-container"></div>
-        <div id="game4" class="game-container"></div>
-
-        <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
-        <script>
-            // Game 1
-            var game1 = new Phaser.Game(800, 600, Phaser.AUTO, 'game1');
-            game1.state.add('PlayGame', { preload: preload, create: create, update: update });
-            function preload() { /* Game 1 preload code */ }
-            function create() { /* Game 1 create code */ }
-            function update() { /* Game 1 update code */ }
-
-            // Game 2
-            var game2 = new Phaser.Game(800, 600, Phaser.AUTO, 'game2');
-            game2.state.add('PlayGame', { preload: preload, create: create, update: update });
-            function preload() { /* Game 2 preload code */ }
-            function create() { /* Game 2 create code */ }
-            function update() { /* Game 2 update code */ }
-
-            // Game 3
-            var game3 = new Phaser.Game(800, 600, Phaser.AUTO, 'game3');
-            game3.state.add('PlayGame', { preload: preload, create: create, update: update });
-            function preload() { /* Game 3 preload code */ }
-            function create() { /* Game 3 create code */ }
-            function update() { /* Game 3 update code */ }
-
-            // Game 4
-            var game4 = new Phaser.Game(800, 600, Phaser.AUTO, 'game4');
-            game4.state.add('PlayGame', { preload: preload, create: create, update: update });
-            function preload() { /* Game 4 preload code */ }
-            function create() { /* Game 4 create code */ }
-            function update() { /* Game 4 update code */ }
-        </script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Games Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Games Website</h1>
+    </header>
+    <main>
+        <section class="game">
+            <h2>Game 1</h2>
+            <p>200 x 200</p>
+        </section>
+        <section class="game">
+            <h2>Game 2 Atalan</h2>
+            <p>200 x 200</p>
+        </section>
+        <section class="game">
+            <h2>Game 3</h2>
+            <p>200 x 200</p>
+        </section>
+        <section class="game">
+            <h2>Game 4</h2>
+            <p>200 x 200</p>
+        </section>
+    </main>
+</body>
 </html>
