@@ -3,71 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Chess Game</title>
+    <title>Hangman</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        #chessboard {
-            display: grid;
-            grid-template-columns: repeat(8, 50px);
-        }
-        .cell {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        #word {
             font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #hangman {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        #letters {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .letter {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            margin: 5px;
             cursor: pointer;
-        }
-        .white {
-            background-color: #f0d9b5;
-        }
-        .black {
-            background-color: #b58863;
-            color: white;
+            border: 1px solid #ccc;
         }
     </style>
 </head>
 <body>
 
-    <div id="chessboard"></div>
+    <div id="word"></div>
+    <div id="hangman">Hangman</div>
+    <div id="letters"></div>
 
     <script>
-        // Function to initialize the chessboard
-        function initChessboard() {
-            const chessboard = document.getElementById('chessboard');
+        const words = ['hangman', 'javascript', 'developer', 'programming'];
+        const word = words[Math.floor(Math.random() * words.length)];
+        const wordDisplay = document.getElementById('word');
+        const hangmanDisplay = document.getElementById('hangman');
+        const lettersContainer = document.getElementById('letters');
 
-            for (let row = 0; row < 8; row++) {
-                for (let col = 0; col < 8; col++) {
-                    const cell = document.createElement('div');
-                    cell.className = (row + col) % 2 === 0 ? 'cell white' : 'cell black';
-                    cell.dataset.row = row;
-                    cell.dataset.col = col;
-                    cell.addEventListener('click', handleCellClick);
-                    chessboard.appendChild(cell);
-                }
+        let guessedWord = Array(word.length).fill('_');
+        let incorrectGuesses = 0;
+
+        function updateWordDisplay() {
+            wordDisplay.textContent = guessedWord.join(' ');
+        }
+
+        function updateHangmanDisplay() {
+            hangmanDisplay.textContent = 'Hangman: ' + 'X'.repeat(incorrectGuesses);
+        }
+
+        function updateLettersContainer() {
+            lettersContainer.innerHTML = '';
+
+            for (let letter of 'abcdefghijklmnopqrstuvwxyz') {
+                const letterBtn = document.createElement('div');
+                letterBtn.className = 'letter';
+                letterBtn.textContent = letter;
+                letterBtn.addEventListener('click', () => handleLetterClick(letter));
+                lettersContainer.appendChild(letterBtn);
             }
         }
 
-        // Function to handle cell click
-        function handleCellClick(event) {
-            const clickedCell = event.target;
-            const row = clickedCell.dataset.row;
-            const col = clickedCell.dataset.col;
+        function handleLetterClick(letter) {
+            if (word.includes(letter)) {
+                for (let i = 0; i < word.length; i++) {
+                    if (word[i] === letter) {
+                        guessedWord[i] = letter;
+                    }
+                }
+            } else {
+                incorrectGuesses++;
+            }
 
-            // Add your chess logic here
+            updateWordDisplay();
+            updateHangmanDisplay();
+            updateLettersContainer();
 
-            console.log(`Clicked on cell: Row ${row}, Col ${col}`);
+            if (!guessedWord.includes('_')) {
+                alert('Congratulations! You guessed the word!');
+            } else if (incorrectGuesses >= 6) {
+                alert('Game Over. The word was: ' + word);
+            }
         }
 
-        // Initialize the chessboard when the page loads
-        window.onload = initChessboard;
+        updateWordDisplay();
+        updateHangmanDisplay();
+        updateLettersContainer();
     </script>
 
 </body>
