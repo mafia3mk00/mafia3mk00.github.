@@ -3,37 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Guessing Game</title>
+    <title>Simple Chess Game</title>
     <style>
         body {
-            text-align: center;
-            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .white {
+            background-color: #f0d9b5;
+        }
+        .black {
+            background-color: #b58863;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-    <h1>Number Guessing Game</h1>
-    <p>Guess a number between 1 and 10:</p>
-    <input type="text" id="userGuess" />
-    <button onclick="checkGuess()">Submit Guess</button>
-    <p id="result"></p>
+    <div id="chessboard"></div>
 
     <script>
-        // Generate a random number between 1 and 10
-        const secretNumber = Math.floor(Math.random() * 10) + 1;
+        // Function to initialize the chessboard
+        function initChessboard() {
+            const chessboard = document.getElementById('chessboard');
 
-        function checkGuess() {
-            // Get user's guess from the input field
-            const userGuess = parseInt(document.getElementById('userGuess').value);
-
-            // Check if the guess is correct
-            if (userGuess === secretNumber) {
-                document.getElementById('result').innerHTML = 'Congratulations! You guessed the correct number!';
-            } else {
-                document.getElementById('result').innerHTML = 'Sorry, try again.';
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const cell = document.createElement('div');
+                    cell.className = (row + col) % 2 === 0 ? 'cell white' : 'cell black';
+                    cell.dataset.row = row;
+                    cell.dataset.col = col;
+                    cell.addEventListener('click', handleCellClick);
+                    chessboard.appendChild(cell);
+                }
             }
         }
+
+        // Function to handle cell click
+        function handleCellClick(event) {
+            const clickedCell = event.target;
+            const row = clickedCell.dataset.row;
+            const col = clickedCell.dataset.col;
+
+            // Add your chess logic here
+
+            console.log(`Clicked on cell: Row ${row}, Col ${col}`);
+        }
+
+        // Initialize the chessboard when the page loads
+        window.onload = initChessboard;
     </script>
 
 </body>
